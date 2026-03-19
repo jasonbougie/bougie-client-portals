@@ -57,12 +57,12 @@
 <!-- Status Banner -->
 <div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm p-6 flex items-center justify-between status-border">
 <div class="flex flex-col gap-1">
-<h2 class="text-primary dark:text-accent text-lg font-bold">Blueprint Delivered v2.2 | Phase 0 — Foundation | SEP Review: Pending</h2>
+<h2 class="text-primary dark:text-accent text-lg font-bold">Blueprint Under Review — Feedback Received | Phase 0 — Foundation | CRA In Preparation</h2>
 <p class="text-slate-500 dark:text-slate-400 text-sm">Last updated: March 19, 2026 • System Architect: BOUGIE Digital</p>
 </div>
 <div class="flex items-center gap-4">
 <span class="bg-accent text-primary px-4 py-1.5 rounded font-bold text-xs uppercase tracking-widest">
-                    Pending Review
+                    Feedback Received
                 </span>
 <button class="bg-primary text-white px-4 py-1.5 rounded text-sm font-semibold hover:bg-slate-800 transition-colors">
                     View Details
@@ -115,6 +115,18 @@
 </div>
 <span class="text-xs font-bold text-slate-400">COMPLETE</span>
 </div>
+<div class="flex items-center justify-between p-4 border border-slate-100 dark:border-slate-700 rounded bg-slate-50 dark:bg-slate-900/50">
+<div class="flex items-center gap-4">
+<div class="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 p-1 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</div>
+<div>
+<p class="font-bold text-slate-800 dark:text-slate-100">Jimmy Pino Feedback Received</p>
+<p class="text-xs text-slate-500">Completed on March 19, 2026</p>
+</div>
+</div>
+<span class="text-xs font-bold text-slate-400">COMPLETE</span>
+</div>
 <div class="flex items-center justify-between p-4 border border-accent/30 rounded bg-accent/5">
 <div class="flex items-center gap-4">
 <div class="bg-accent/20 text-primary p-1 rounded-full flex items-center justify-center">
@@ -127,17 +139,29 @@
 </div>
 <span class="text-xs font-bold text-primary">IN PROGRESS</span>
 </div>
+<div class="flex items-center justify-between p-4 border border-amber-300/40 rounded bg-amber-50/30 dark:bg-amber-900/10">
+<div class="flex items-center gap-4">
+<div class="bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 p-1 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">edit_document</span>
+</div>
+<div>
+<p class="font-bold text-slate-800 dark:text-slate-100">Compliance &amp; Risk Assessment (CRA) — In Preparation</p>
+<p class="text-xs text-slate-500">Target: March 22, 2026 — BOUGIE Digital</p>
+</div>
+</div>
+<span class="text-xs font-bold text-amber-600">IN PROGRESS</span>
+</div>
 <div class="flex items-center justify-between p-4 border border-slate-100 dark:border-slate-700 rounded">
 <div class="flex items-center gap-4">
 <div class="bg-slate-100 dark:bg-slate-700 text-slate-400 p-1 rounded-full flex items-center justify-center">
 <span class="material-symbols-outlined text-lg">schedule</span>
 </div>
 <div>
-<p class="font-bold text-slate-400">CRA Document for Jimmi Pino</p>
-<p class="text-xs text-slate-400">In progress — BOUGIE Digital</p>
+<p class="font-bold text-slate-400">Revised Delivery Timeline</p>
+<p class="text-xs text-slate-400">Target: TBD — pending dual-environment testing plan</p>
 </div>
 </div>
-<span class="text-xs font-bold text-slate-300">UPCOMING</span>
+<span class="text-xs font-bold text-slate-300">PENDING</span>
 </div>
 </div>
 </section>
@@ -210,20 +234,24 @@
 <section class="bg-primary rounded-lg shadow-lg p-8 border-2 border-accent">
 <div class="flex items-center gap-3 mb-4">
 <span class="material-symbols-outlined text-accent">bolt</span>
-<h3 class="text-white text-lg font-bold tracking-tight uppercase">Next Steps</h3>
+<h3 class="text-white text-lg font-bold tracking-tight uppercase">Action Required</h3>
 </div>
 <ul class="space-y-4">
 <li class="flex gap-3">
-<span class="material-symbols-outlined text-accent text-sm mt-1">arrow_forward</span>
-<p class="text-white/90 text-sm">Review and approve Blueprint v2.2</p>
+<span class="text-green-400 text-sm mt-0.5">✅</span>
+<p class="text-white/90 text-sm">Blueprint v2.2 delivered to SEP team</p>
 </li>
 <li class="flex gap-3">
-<span class="material-symbols-outlined text-accent text-sm mt-1">arrow_forward</span>
-<p class="text-white/90 text-sm">CRA document review — Jimmi Pino</p>
+<span class="text-amber-400 text-sm mt-0.5">🔄</span>
+<p class="text-white/90 text-sm">CRA document in preparation — addressing Jimmy Pino security questions</p>
 </li>
 <li class="flex gap-3">
-<span class="material-symbols-outlined text-accent text-sm mt-1">arrow_forward</span>
-<p class="text-white/90 text-sm">Confirm Phase 1 Kickoff meeting attendance (TBD).</p>
+<span class="text-white/50 text-sm mt-0.5">⏳</span>
+<p class="text-white/90 text-sm">Dual-environment testing plan needed (test + production)</p>
+</li>
+<li class="flex gap-3">
+<span class="text-white/50 text-sm mt-0.5">⏳</span>
+<p class="text-white/90 text-sm">Testing team assembly — awaiting Jimmy Pino confirmation</p>
 </li>
 </ul>
 <button class="w-full mt-6 bg-accent text-primary py-3 rounded font-bold uppercase tracking-widest text-xs hover:bg-yellow-400 transition-colors">
