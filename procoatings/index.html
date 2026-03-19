@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pro Coatings × BOUGIE Digital — Drip AI Agent</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "navy":    "#0a1628",
+          "navy-2":  "#0d1e38",
+          "navy-3":  "#112248",
+          "electric":"#0066CC",
+          "electric-light": "#1a7fe0",
+          "amber":   "#F5A623",
+          "steel":   "#1e2a3a",
+          "steel-2": "#2a3a52",
+          "steel-3": "#354a66",
+        },
+        fontFamily: {
+          sans: ["Inter", "sans-serif"],
+        },
+      },
+    },
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; background-color: #0a1628; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .material-symbols-filled   { font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24; }
+  .accent-bar { border-left: 4px solid #0066CC; }
+  .amber-bar  { border-left: 4px solid #F5A623; }
+  .green-bar  { border-left: 4px solid #22c55e; }
+  .drip-glow  { text-shadow: 0 0 20px rgba(0,102,204,0.7); }
+  .card { background: #0d1e38; border: 1px solid #1e2a3a; }
+  .card-hover:hover { border-color: #0066CC; transition: border-color 0.2s; }
+  .phase-complete  { background: linear-gradient(135deg, #112248 0%, #0d1e38 100%); border: 1px solid #22c55e40; }
+  .phase-active    { background: linear-gradient(135deg, #0d2a50 0%, #0d1e38 100%); border: 1px solid #F5A62360; }
+  .phase-pending   { background: #0d1e38; border: 1px solid #1e2a3a; }
+  .phase-upcoming  { background: #0a1628; border: 1px solid #1e2a3a; opacity: 0.7; }
+  .metric-tile     { background: linear-gradient(135deg, #0d1e38 0%, #112248 100%); border: 1px solid #1e2a3a; }
+  .product-card    { background: linear-gradient(135deg, #0d1e38 0%, #112248 100%); border: 1px solid #1e2a3a; }
+  .product-card:hover { border-color: #0066CC; transform: translateY(-2px); transition: all 0.2s; }
+  .milestone-row:hover td { background: #112248; }
+  .decision-card   { background: #0d1e38; border: 1px solid #F5A62340; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .badge-live  { background: #052e16; color: #4ade80; border: 1px solid #166534; }
+  .badge-warn  { background: #431407; color: #fb923c; border: 1px solid #9a3412; }
+  .badge-blue  { background: #0c1a4e; color: #60a5fa; border: 1px solid #1e40af; }
+  .badge-gray  { background: #1e2a3a; color: #94a3b8; border: 1px solid #2a3a52; }
+  .table-row:nth-child(even) td { background: #0d1e38; }
+  .table-row:nth-child(odd)  td { background: #091525; }
+</style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col">
+
+<!-- ═══════════════════════════════════════════════════════ HEADER ═══ -->
+<header class="bg-navy-2 border-b border-steel px-8 py-4 flex items-center justify-between shadow-lg">
+  <div class="flex items-center gap-6">
+    <div class="flex items-center gap-3">
+      <div class="text-3xl drip-glow select-none">💧</div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-white text-xl font-black tracking-tight">DRIP</span>
+          <span class="text-slate-400 text-xs font-medium mt-0.5">AI Agent</span>
+        </div>
+        <p class="text-slate-500 text-xs leading-none">Pro Coatings × BOUGIE Digital</p>
+      </div>
+    </div>
+    <div class="h-8 w-px bg-white/10"></div>
+    <div>
+      <p class="text-white font-semibold text-sm">Lifetime Pro Coatings</p>
+      <p class="text-slate-400 text-xs">pro-coatings.com &nbsp;·&nbsp; Always Clean Standard.™</p>
+    </div>
+  </div>
+  <div class="flex items-center gap-3">
+    <span class="text-slate-400 text-xs hidden md:block">Last updated: March 19, 2026</span>
+    <div class="h-4 w-px bg-white/10 hidden md:block"></div>
+    <div class="badge-live px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-1.5">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block"></span>
+      Phase 1 Complete — HubSpot Live
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════ MAIN ═══ -->
+<main class="flex-grow max-w-[1440px] mx-auto w-full p-6 space-y-6">
+
+  <!-- ── Hero Banner ── -->
+  <div class="card accent-bar rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div>
+      <h1 class="text-2xl font-black text-white tracking-tight">Pro Coatings × BOUGIE Digital</h1>
+      <p class="text-electric text-sm font-semibold mt-1">💧 Drip AI Agent — Intelligent Sales & CRM Automation</p>
+      <p class="text-slate-400 text-xs mt-1">Deployed on Mac Studio · Port 18790 · Six-file agent framework</p>
+    </div>
+    <div class="flex items-center gap-3 flex-wrap">
+      <div class="badge-blue px-3 py-1 rounded text-xs font-semibold flex items-center gap-1">
+        <span class="material-symbols-outlined text-base">hub</span> HubSpot Connected
+      </div>
+      <div class="badge-blue px-3 py-1 rounded text-xs font-semibold flex items-center gap-1">
+        <span class="material-symbols-outlined text-base">forum</span> Slack Active
+      </div>
+      <div class="badge-live px-3 py-1 rounded text-xs font-semibold flex items-center gap-1">
+        <span class="material-symbols-outlined text-base">check_circle</span> Phase 1 Done
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Status Metrics Bar ── -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+    <!-- Tile 1: Agent Status -->
+    <div class="metric-tile rounded-lg p-5 flex flex-col gap-3 card-hover">
+      <div class="flex items-center justify-between">
+        <span class="text-slate-400 text-xs font-semibold uppercase tracking-widest">Agent Status</span>
+        <span class="material-symbols-outlined text-green-400 text-xl">smart_toy</span>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse inline-block"></span>
+          <span class="text-green-400 text-2xl font-black">LIVE</span>
+        </div>
+        <p class="text-slate-500 text-xs mt-1 font-mono">Port 18790</p>
+      </div>
+    </div>
+
+    <!-- Tile 2: HubSpot -->
+    <div class="metric-tile rounded-lg p-5 flex flex-col gap-3 card-hover">
+      <div class="flex items-center justify-between">
+        <span class="text-slate-400 text-xs font-semibold uppercase tracking-widest">HubSpot CRM</span>
+        <span class="material-symbols-outlined text-electric text-xl">hub</span>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-white text-2xl font-black">Connected</span>
+          <span class="text-green-400 text-xl">✅</span>
+        </div>
+        <p class="text-slate-500 text-xs mt-1">8 products synced</p>
+      </div>
+    </div>
+
+    <!-- Tile 3: Slack -->
+    <div class="metric-tile rounded-lg p-5 flex flex-col gap-3 card-hover">
+      <div class="flex items-center justify-between">
+        <span class="text-slate-400 text-xs font-semibold uppercase tracking-widest">Slack</span>
+        <span class="material-symbols-outlined text-electric text-xl">forum</span>
+      </div>
+      <div>
+        <div class="text-white text-2xl font-black">2 Channels</div>
+        <p class="text-slate-500 text-xs mt-1">Active &amp; monitored</p>
+      </div>
+    </div>
+
+    <!-- Tile 4: Phase -->
+    <div class="metric-tile rounded-lg p-5 flex flex-col gap-3 card-hover">
+      <div class="flex items-center justify-between">
+        <span class="text-slate-400 text-xs font-semibold uppercase tracking-widest">Current Phase</span>
+        <span class="material-symbols-outlined text-amber text-xl">flag</span>
+      </div>
+      <div>
+        <div class="text-white text-2xl font-black">1 <span class="text-slate-500 text-lg font-medium">of 4</span></div>
+        <p class="text-slate-500 text-xs mt-1">Foundation complete</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Phase Timeline ── -->
+  <div class="card rounded-lg overflow-hidden">
+    <div class="px-6 py-4 border-b border-steel flex items-center gap-3">
+      <span class="material-symbols-outlined text-electric text-xl">account_tree</span>
+      <h2 class="text-white font-bold text-base tracking-tight">Project Phases</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-steel">
+
+      <!-- Phase 1: COMPLETE -->
+      <div class="phase-complete p-5 flex flex-col gap-3 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-green-500 opacity-60"></div>
+        <div class="flex items-center justify-between">
+          <span class="text-green-400 text-xs font-bold uppercase tracking-widest">Complete ✅</span>
+          <span class="bg-green-900/50 text-green-400 text-xs px-2 py-0.5 rounded-full border border-green-800 font-semibold">Done</span>
+        </div>
+        <div>
+          <p class="text-white font-bold text-sm leading-tight">Phase 1</p>
+          <p class="text-electric text-xs font-semibold">Foundation</p>
+        </div>
+        <ul class="space-y-1 mt-1">
+          <li class="text-slate-400 text-xs flex items-start gap-1.5"><span class="text-green-400 mt-0.5">✓</span>Six-file agent framework</li>
+          <li class="text-slate-400 text-xs flex items-start gap-1.5"><span class="text-green-400 mt-0.5">✓</span>HubSpot CRM connected</li>
+          <li class="text-slate-400 text-xs flex items-start gap-1.5"><span class="text-green-400 mt-0.5">✓</span>Slack channels wired</li>
+          <li class="text-slate-400 text-xs flex items-start gap-1.5"><span class="text-green-400 mt-0.5">✓</span>Product catalog rebuilt</li>
+        </ul>
+      </div>
+
+      <!-- Phase 2: IN PROGRESS -->
+      <div class="phase-active p-5 flex flex-col gap-3 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-amber opacity-80 animate-pulse"></div>
+        <div class="flex items-center justify-between">
+          <span class="text-amber text-xs font-bold uppercase tracking-widest">In Progress 🟡</span>
+          <span class="bg-amber/10 text-amber text-xs px-2 py-0.5 rounded-full border border-amber/30 font-semibold">Active</span>
+        </div>
+        <div>
+          <p class="text-white font-bold text-sm leading-tight">Phase 2</p>
+          <p class="text-amber text-xs font-semibold">Intelligence</p>
+        </div>
+        <ul class="space-y-1 mt-1">
+          <li class="text-slate-400 text-xs flex items-start gap-1.5"><span class="text-amber mt-0.5">→</span>Pipeline automation</li>
+          <li class="text-slate-400 text-xs flex items-start gap-1.5"><span class="text-amber mt-0.5">→</span>Follow-up flows</li>
+          <li class="text-slate-400 text-xs flex items-start gap-1.5"><span class="text-amber mt-0.5">→</span>Deal stage alerts</li>
+          <li class="text-slate-400 text-xs flex items-start gap-1.5"><span class="text-amber mt-0.5">→</span>Smart quote logic</li>
+        </ul>
+      </div>
+
+      <!-- Phase 3: PENDING -->
+      <div class="phase-pending p-5 flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-500 text-xs font-bold uppercase tracking-widest">Pending ⏳</span>
+          <span class="badge-gray text-xs px-2 py-0.5 rounded-full font-semibold">Blocked</span>
+        </div>
+        <div>
+          <p class="text-white font-bold text-sm leading-tight">Phase 3</p>
+          <p class="text-slate-400 text-xs font-semibold">Email Integration</p>
+        </div>
+        <ul class="space-y-1 mt-1">
+          <li class="text-slate-500 text-xs flex items-start gap-1.5"><span class="text-slate-600 mt-0.5">○</span>Gmail API access</li>
+          <li class="text-slate-500 text-xs flex items-start gap-1.5"><span class="text-slate-600 mt-0.5">○</span>Drip email sends</li>
+          <li class="text-slate-500 text-xs flex items-start gap-1.5"><span class="text-amber mt-0.5">!</span><span>Requires Google Workspace</span></li>
+          <li class="text-slate-500 text-xs flex items-start gap-1.5"><span class="text-amber mt-0.5">!</span><span>$6/user/mo decision needed</span></li>
+        </ul>
+      </div>
+
+      <!-- Phase 4: UPCOMING -->
+      <div class="phase-upcoming p-5 flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-600 text-xs font-bold uppercase tracking-widest">Upcoming</span>
+          <span class="badge-gray text-xs px-2 py-0.5 rounded-full font-semibold opacity-60">Future</span>
+        </div>
+        <div>
+          <p class="text-white font-bold text-sm leading-tight opacity-60">Phase 4</p>
+          <p class="text-slate-500 text-xs font-semibold">Full Automation</p>
+        </div>
+        <ul class="space-y-1 mt-1">
+          <li class="text-slate-600 text-xs flex items-start gap-1.5"><span class="mt-0.5">○</span>End-to-end automation</li>
+          <li class="text-slate-600 text-xs flex items-start gap-1.5"><span class="mt-0.5">○</span>AI-driven proposals</li>
+          <li class="text-slate-600 text-xs flex items-start gap-1.5"><span class="mt-0.5">○</span>Autonomous follow-up</li>
+          <li class="text-slate-600 text-xs flex items-start gap-1.5"><span class="mt-0.5">○</span>Full CRM sync</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Product Catalog + Milestones (2-col) ── -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <!-- Product Catalog -->
+    <div class="card rounded-lg overflow-hidden">
+      <div class="px-6 py-4 border-b border-steel flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-electric text-xl">inventory_2</span>
+          <h2 class="text-white font-bold text-base tracking-tight">Product Catalog</h2>
+        </div>
+        <span class="badge-blue text-xs px-3 py-1 rounded font-semibold">8 SKUs Synced ✅</span>
+      </div>
+      <div class="p-4 grid grid-cols-2 gap-3">
+
+        <!-- Lifetime Waterproofing 400g -->
+        <div class="product-card rounded-lg p-4 flex flex-col gap-2 cursor-default">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="text-white font-bold text-sm leading-tight">Lifetime Waterproofing</p>
+              <p class="text-slate-400 text-xs">Sealant · 400g</p>
+            </div>
+            <div class="text-[10px] font-bold text-electric bg-electric/10 border border-electric/20 rounded px-1.5 py-0.5 whitespace-nowrap">400g</div>
+          </div>
+          <p class="text-white font-black text-lg mt-auto">$325</p>
+        </div>
+
+        <!-- Lifetime Waterproofing 600g -->
+        <div class="product-card rounded-lg p-4 flex flex-col gap-2 cursor-default">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="text-white font-bold text-sm leading-tight">Lifetime Waterproofing</p>
+              <p class="text-slate-400 text-xs">Sealant · 600g</p>
+            </div>
+            <div class="text-[10px] font-bold text-electric bg-electric/10 border border-electric/20 rounded px-1.5 py-0.5 whitespace-nowrap">600g</div>
+          </div>
+          <p class="text-white font-black text-lg mt-auto">$325</p>
+        </div>
+
+        <!-- Lifetime Plus 400g -->
+        <div class="product-card rounded-lg p-4 flex flex-col gap-2 cursor-default">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="text-white font-bold text-sm leading-tight">Lifetime Plus</p>
+              <p class="text-slate-400 text-xs">Enhanced Formula · 400g</p>
+            </div>
+            <div class="text-[10px] font-bold text-electric bg-electric/10 border border-electric/20 rounded px-1.5 py-0.5 whitespace-nowrap">400g</div>
+          </div>
+          <p class="text-white font-black text-lg mt-auto">$375</p>
+        </div>
+
+        <!-- Lifetime Plus 600g -->
+        <div class="product-card rounded-lg p-4 flex flex-col gap-2 cursor-default">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="text-white font-bold text-sm leading-tight">Lifetime Plus</p>
+              <p class="text-slate-400 text-xs">Enhanced Formula · 600g</p>
+            </div>
+            <div class="text-[10px] font-bold text-electric bg-electric/10 border border-electric/20 rounded px-1.5 py-0.5 whitespace-nowrap">600g</div>
+          </div>
+          <p class="text-white font-black text-lg mt-auto">$375</p>
+        </div>
+
+        <!-- Lifetime Nano 400g -->
+        <div class="product-card rounded-lg p-4 flex flex-col gap-2 cursor-default">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="text-white font-bold text-sm leading-tight">Lifetime Nano</p>
+              <p class="text-slate-400 text-xs">Nano Technology · 400g</p>
+            </div>
+            <div class="text-[10px] font-bold text-amber bg-amber/10 border border-amber/20 rounded px-1.5 py-0.5 whitespace-nowrap">400g</div>
+          </div>
+          <p class="text-white font-black text-lg mt-auto">$525</p>
+        </div>
+
+        <!-- Lifetime Nano 600g -->
+        <div class="product-card rounded-lg p-4 flex flex-col gap-2 cursor-default">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="text-white font-bold text-sm leading-tight">Lifetime Nano</p>
+              <p class="text-slate-400 text-xs">Nano Technology · 600g</p>
+            </div>
+            <div class="text-[10px] font-bold text-amber bg-amber/10 border border-amber/20 rounded px-1.5 py-0.5 whitespace-nowrap">600g</div>
+          </div>
+          <p class="text-white font-black text-lg mt-auto">$525</p>
+        </div>
+
+        <!-- Lifetime Nano Plus 400g -->
+        <div class="product-card rounded-lg p-4 flex flex-col gap-2 cursor-default">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="text-white font-bold text-sm leading-tight">Lifetime Nano Plus</p>
+              <p class="text-slate-400 text-xs">Premium Nano · 400g</p>
+            </div>
+            <div class="text-[10px] font-bold text-amber bg-amber/10 border border-amber/20 rounded px-1.5 py-0.5 whitespace-nowrap">400g</div>
+          </div>
+          <p class="text-white font-black text-lg mt-auto">$600</p>
+        </div>
+
+        <!-- Lifetime Nano Plus 600g -->
+        <div class="product-card rounded-lg p-4 flex flex-col gap-2 cursor-default">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="text-white font-bold text-sm leading-tight">Lifetime Nano Plus</p>
+              <p class="text-slate-400 text-xs">Premium Nano · 600g</p>
+            </div>
+            <div class="text-[10px] font-bold text-amber bg-amber/10 border border-amber/20 rounded px-1.5 py-0.5 whitespace-nowrap">600g</div>
+          </div>
+          <p class="text-white font-black text-lg mt-auto">$600</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Milestones Table -->
+    <div class="card rounded-lg overflow-hidden">
+      <div class="px-6 py-4 border-b border-steel flex items-center gap-3">
+        <span class="material-symbols-outlined text-electric text-xl">checklist</span>
+        <h2 class="text-white font-bold text-base tracking-tight">Key Milestones</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-navy-3">
+              <th class="px-4 py-3 text-left text-xs font-bold text-slate-400 uppercase tracking-wider w-12">Status</th>
+              <th class="px-4 py-3 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Milestone</th>
+              <th class="px-4 py-3 text-left text-xs font-bold text-slate-400 uppercase tracking-wider w-24">Date</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-steel/50">
+            <tr class="milestone-row">
+              <td class="px-4 py-3 text-center text-base">✅</td>
+              <td class="px-4 py-3 text-slate-200 text-xs">Drip agent deployed on Mac Studio (port 18790)</td>
+              <td class="px-4 py-3 text-slate-500 text-xs font-mono whitespace-nowrap">Mar 18, 2026</td>
+            </tr>
+            <tr class="milestone-row">
+              <td class="px-4 py-3 text-center text-base">✅</td>
+              <td class="px-4 py-3 text-slate-200 text-xs">Six-file framework complete</td>
+              <td class="px-4 py-3 text-slate-500 text-xs font-mono whitespace-nowrap">Mar 18, 2026</td>
+            </tr>
+            <tr class="milestone-row">
+              <td class="px-4 py-3 text-center text-base">✅</td>
+              <td class="px-4 py-3 text-slate-200 text-xs">HubSpot connected — product catalog rebuilt (8 products)</td>
+              <td class="px-4 py-3 text-slate-500 text-xs font-mono whitespace-nowrap">Mar 18, 2026</td>
+            </tr>
+            <tr class="milestone-row">
+              <td class="px-4 py-3 text-center text-base">✅</td>
+              <td class="px-4 py-3 text-slate-200 text-xs">Slack channels wired (2 channels)</td>
+              <td class="px-4 py-3 text-slate-500 text-xs font-mono whitespace-nowrap">Mar 18, 2026</td>
+            </tr>
+            <tr class="milestone-row">
+              <td class="px-4 py-3 text-center text-base">✅</td>
+              <td class="px-4 py-3 text-slate-200 text-xs">Ewing Irrigation quote drafted</td>
+              <td class="px-4 py-3 text-slate-500 text-xs font-mono whitespace-nowrap">Mar 18, 2026</td>
+            </tr>
+            <tr class="milestone-row">
+              <td class="px-4 py-3 text-center text-base">🟡</td>
+              <td class="px-4 py-3 text-xs"><span class="text-amber">Pipeline automation</span><span class="text-slate-500 ml-1">— in progress</span></td>
+              <td class="px-4 py-3 text-slate-500 text-xs font-mono">TBD</td>
+            </tr>
+            <tr class="milestone-row">
+              <td class="px-4 py-3 text-center text-base">⏳</td>
+              <td class="px-4 py-3 text-slate-500 text-xs">Google Workspace migration (unlock email API)</td>
+              <td class="px-4 py-3 text-slate-500 text-xs font-mono">TBD</td>
+            </tr>
+            <tr class="milestone-row">
+              <td class="px-4 py-3 text-center text-base">⏳</td>
+              <td class="px-4 py-3 text-slate-500 text-xs">HubSpot Sales Hub Starter upgrade (unlock line items)</td>
+              <td class="px-4 py-3 text-slate-500 text-xs font-mono">TBD</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Open Decisions + Team (2-col) ── -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- Open Decisions (2/3 width) -->
+    <div class="lg:col-span-2 card rounded-lg overflow-hidden">
+      <div class="px-6 py-4 border-b border-steel flex items-center gap-3">
+        <span class="material-symbols-outlined text-amber text-xl">pending_actions</span>
+        <h2 class="text-white font-bold text-base tracking-tight">Open Decisions</h2>
+        <span class="badge-warn text-[11px] px-2.5 py-0.5 rounded-full font-bold ml-auto">3 Pending</span>
+      </div>
+      <div class="p-4 space-y-3">
+
+        <div class="decision-card amber-bar rounded-r-lg p-4 flex flex-col gap-2">
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-amber text-base">email</span>
+              <p class="text-white font-bold text-sm">Google Workspace Migration</p>
+            </div>
+            <span class="text-amber text-xs font-bold bg-amber/10 border border-amber/30 px-2 py-0.5 rounded whitespace-nowrap">Recommended</span>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed">Migrate to Google Workspace at <span class="text-white font-semibold">$6/user/month</span>. Required to unlock Gmail API access — this is what enables Drip to send and monitor emails on behalf of Pro Coatings.</p>
+          <div class="flex items-center gap-2 mt-1">
+            <span class="text-xs text-slate-500">Impact:</span>
+            <span class="text-xs text-electric font-medium">Unlocks Phase 3 Email Integration</span>
+          </div>
+        </div>
+
+        <div class="decision-card amber-bar rounded-r-lg p-4 flex flex-col gap-2">
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-amber text-base">hub</span>
+              <p class="text-white font-bold text-sm">HubSpot Sales Hub Starter Upgrade</p>
+            </div>
+            <span class="text-amber text-xs font-bold bg-amber/10 border border-amber/30 px-2 py-0.5 rounded whitespace-nowrap">~$15–20/seat/mo</span>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed">Upgrade to Sales Hub Starter to unlock the <strong class="text-white">line items API</strong>. Required for Drip to build proper itemized quotes and proposals directly through HubSpot.</p>
+          <div class="flex items-center gap-2 mt-1">
+            <span class="text-xs text-slate-500">Impact:</span>
+            <span class="text-xs text-electric font-medium">Full quote automation in Phase 2</span>
+          </div>
+        </div>
+
+        <div class="decision-card rounded-lg p-4 flex flex-col gap-2" style="border: 1px solid #1e2a3a; border-left: 4px solid #475569;">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-slate-400 text-base">block</span>
+            <p class="text-slate-300 font-bold text-sm">Drip Email Integration</p>
+            <span class="text-slate-500 text-xs font-bold bg-slate-700/50 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap ml-auto">Blocked</span>
+          </div>
+          <p class="text-slate-500 text-xs leading-relaxed">Email integration is blocked until the Google Workspace migration decision is made. Once resolved, Drip can be wired to send automated follow-up emails, proposal delivery, and deal update notifications.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Team (1/3 width) -->
+    <div class="card rounded-lg overflow-hidden">
+      <div class="px-6 py-4 border-b border-steel flex items-center gap-3">
+        <span class="material-symbols-outlined text-electric text-xl">groups</span>
+        <h2 class="text-white font-bold text-base tracking-tight">Project Team</h2>
+      </div>
+      <div class="p-4 space-y-4">
+
+        <div>
+          <p class="text-electric text-xs font-bold uppercase tracking-widest mb-3">Pro Coatings</p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 bg-navy-3 rounded-lg px-3 py-2.5">
+              <div class="w-8 h-8 rounded-full bg-electric flex items-center justify-center text-white text-xs font-black flex-shrink-0">CV</div>
+              <div>
+                <p class="text-white text-sm font-semibold">Chip Vance</p>
+                <p class="text-slate-500 text-xs">Owner</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 bg-navy-3 rounded-lg px-3 py-2.5">
+              <div class="w-8 h-8 rounded-full bg-electric/70 flex items-center justify-center text-white text-xs font-black flex-shrink-0">AB</div>
+              <div>
+                <p class="text-white text-sm font-semibold">Austin Brooks</p>
+                <p class="text-slate-500 text-xs">Sales</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="h-px bg-steel"></div>
+
+        <div>
+          <p class="text-electric text-xs font-bold uppercase tracking-widest mb-3">BOUGIE Digital</p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 bg-navy-3 rounded-lg px-3 py-2.5">
+              <div class="w-8 h-8 rounded-full bg-amber flex items-center justify-center text-navy text-xs font-black flex-shrink-0">JB</div>
+              <div>
+                <p class="text-white text-sm font-semibold">Jason Bougie</p>
+                <p class="text-slate-500 text-xs">Project Lead</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 bg-navy-3 rounded-lg px-3 py-2.5">
+              <div class="w-8 h-8 rounded-full bg-electric flex items-center justify-center text-white text-base flex-shrink-0">💧</div>
+              <div>
+                <p class="text-white text-sm font-semibold">Drip</p>
+                <p class="text-slate-500 text-xs">AI Agent · Port 18790</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════ FOOTER ═══ -->
+<footer class="bg-navy-2 border-t border-steel px-8 py-4 flex items-center justify-between">
+  <div class="flex items-center gap-2 text-slate-500 text-xs">
+    <span class="text-base">💧</span>
+    <span>DRIP AI Agent · Lifetime Pro Coatings</span>
+    <span class="text-slate-700 px-2">·</span>
+    <span>Built by BOUGIE Digital</span>
+  </div>
+  <div class="flex items-center gap-4 text-xs text-slate-600">
+    <span>pro-coatings.com</span>
+    <span class="text-slate-700">·</span>
+    <span>Always Clean Standard.™</span>
+    <span class="text-slate-700">·</span>
+    <span>Phase 1 Complete — March 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
