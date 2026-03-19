@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Brighton Group — Camilla AI Pilot Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#16213c",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#14171e",
+                        "accent-success": "#10b981",
+                        "accent-info": "#3b82f6",
+                        "accent-warning": "#f59e0b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-4">
+<div class="bg-primary text-white p-2 rounded-lg">
+<span class="material-symbols-outlined block text-2xl">neurology</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-primary dark:text-slate-100">Brighton Group — Camilla AI Pilot</h1>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Powered by BOUGIE Digital</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-lg border border-primary/10">
+<span class="text-sm font-bold text-primary dark:text-slate-200 tracking-wider">BOUGIE DIGITAL</span>
+</div>
+<div class="h-10 w-10 rounded-full bg-slate-200 overflow-hidden border-2 border-white shadow-sm" data-alt="BOUGIE Digital company logo icon">
+<img alt="Logo" class="w-full h-full object-cover" data-alt="Abstract minimalist geometric brand logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1Q_b6qAIn3Sttrzx823R57zkuvKj63yZ0TqyqOzP5bOa4SVjGD5p7u2VKV_D5Z4Cdwvxfgkijb5ysD6QGkRDtt5gMb7Cx7i_z14T49cxBa_5YzhCQYCkkCq1dBuXZXtRlGdkvSFrLS1Je0Ute-5SXRQqAtquiQd02wHxq6y6T0Od-Zd04vJAlA3eH75xogm50JkcPvSzVz3CVJTMzjYLy-RvcH-ey4vKtq-LvoLO5AIKwhXpC761SV0A6887G117tOC9AL0cZK6k"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Status Bar Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Project Status</span>
+<span class="material-symbols-outlined text-accent-success">check_circle</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="h-2.5 w-2.5 rounded-full bg-accent-success animate-pulse"></div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">AI Pilot Active</p>
+</div>
+<span class="inline-flex items-center rounded-full bg-green-50 dark:bg-green-900/30 px-2.5 py-0.5 text-xs font-medium text-green-700 dark:text-green-300 w-fit">Operational</span>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Current Phase</span>
+<span class="material-symbols-outlined text-accent-info">schema</span>
+</div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">Schema Delivered</p>
+<span class="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-900/30 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300 w-fit">In Review</span>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Next Meeting</span>
+<span class="material-symbols-outlined text-accent-warning">calendar_today</span>
+</div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">March 19 · 1 PM</p>
+<span class="inline-flex items-center rounded-full bg-amber-50 dark:bg-amber-900/30 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300 w-fit">Virtual Sync</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Content -->
+<div class="lg:col-span-2 space-y-8">
+<!-- About Camilla -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary dark:text-slate-300">smart_toy</span>
+<h2 class="text-2xl font-bold text-primary dark:text-slate-100">About Camilla</h2>
+</div>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
+                            Camilla is an advanced AI-powered Sales Assistant engineered to modernize client interactions for the Brighton Group. By automating initial outreach, qualification, and appointment setting, Camilla ensures your sales team focuses only on high-value closing activities while maintaining a personalized touch with every prospect.
+                        </p>
+</div>
+</section>
+<!-- Current Phase Details -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-8">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-slate-300">fact_check</span>
+<h2 class="text-2xl font-bold text-primary dark:text-slate-100">Current Phase: Schema Delivered</h2>
+</div>
+</div>
+<div class="prose prose-slate dark:prose-invert max-w-none mb-8">
+<p class="text-slate-600 dark:text-slate-400">
+                                The foundational data schema has been finalized and delivered for internal review. This structure defines how Camilla identifies lead attributes, stores conversation context, and maps data to the Brighton Group's CRM. Currently, <span class="font-semibold text-slate-900 dark:text-white">Jay Lopez</span> is conducting a technical audit of the schema to ensure seamless integration with existing data pipelines.
+                            </p>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<span class="text-sm font-semibold text-primary dark:text-slate-300 uppercase tracking-wider">Pilot Progress</span>
+<span class="text-sm font-bold text-primary dark:text-slate-100">40%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3">
+<div class="bg-primary h-3 rounded-full" style="width: 40%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Next Steps -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary dark:text-slate-300">alt_route</span>
+<h2 class="text-2xl font-bold text-primary dark:text-slate-100">Next Steps</h2>
+</div>
+<ul class="space-y-4">
+<li class="flex gap-4">
+<span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary dark:text-slate-300 text-xs font-bold">1</span>
+<p class="text-slate-600 dark:text-slate-400"><span class="font-medium text-slate-900 dark:text-slate-200">Schema Approval:</span> Final sign-off on the data mapping document by the Brighton technical team.</p>
+</li>
+<li class="flex gap-4">
+<span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary dark:text-slate-300 text-xs font-bold">2</span>
+<p class="text-slate-600 dark:text-slate-400"><span class="font-medium text-slate-900 dark:text-slate-200">API Handshake:</span> Configuration of secure endpoints between Camilla AI and the staging CRM environment.</p>
+</li>
+<li class="flex gap-4">
+<span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary dark:text-slate-300 text-xs font-bold">3</span>
+<p class="text-slate-600 dark:text-slate-400"><span class="font-medium text-slate-900 dark:text-slate-200">Knowledge Base Training:</span> Uploading Brighton Group's sales playbooks and product documentation for LLM fine-tuning.</p>
+</li>
+<li class="flex gap-4">
+<span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary dark:text-slate-300 text-xs font-bold">4</span>
+<p class="text-slate-600 dark:text-slate-400"><span class="font-medium text-slate-900 dark:text-slate-200">Alpha Testing:</span> Initial internal conversation simulations with the core Brighton sales team.</p>
+</li>
+</ul>
+</div>
+</section>
+</div>
+<!-- Right Column: Team Section -->
+<div class="space-y-8">
+<section>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary dark:text-slate-300">groups</span>
+<h2 class="text-2xl font-bold text-primary dark:text-slate-100">Project Team</h2>
+</div>
+<div class="space-y-4">
+<!-- Team Card 1 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-slate-100 overflow-hidden" data-alt="Professional headshot of Scott Chapman">
+<img alt="Scott Chapman" class="w-full h-full object-cover" data-alt="Portrait of a professional man in a suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmLcndLyU4hR9P9jOw3dn0d0gP_wOq6h1_0oyjqK5u8ZSoRbSzBDofeX1f2UxD4fcd8zPxCu3Dsv0dxYV5O6FVGAz-lTHz_fzBTdPY8ookPZnBH6KiMWetkbxVIeI0QLEoqN87pAVuo8McsvcXbeHZwUu9RMUQfrnoPth8s2rgzlQKHaAI42OZugAlqqWhoRFGjzjUYx2dMfL-ciwCUEXfTxzLahgjp-oQL_0CAcnGXsIIiVrm42puLhWu3pR37kI-21AyyIgxBhk"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Scott Chapman</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Executive Sponsor</p>
+</div>
+</div>
+<!-- Team Card 2 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-slate-100 overflow-hidden" data-alt="Professional headshot of Jay Lopez">
+<img alt="Jay Lopez" class="w-full h-full object-cover" data-alt="Portrait of a smiling professional male" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASFEgpxjzaWFuEF1GO2rxaazR7w3r9QHAZ0AG-D0sWVurJLO6ePg9SiR62oR76WEsOGZ1FuQ4fj8oVgAXGkcdYwZJ30EQPBecw2-Nfw90c8HyLRKuwoQmJmlh6WyNxJu7QSn-UXz5S1JvYUVrGiNJ4PcPKnv0dl2zwwzKlbeNlBgwYb172pgRC_KjlSRgl8x5sUgA1O2UDW9Qjz6Zvf6RUM_YTrHfynB4l2wltd5wMYrGpDuM1ky0fPiBo2hCl6P65suFQbQCrRkE"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Jay Lopez</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Technical Lead</p>
+</div>
+</div>
+<!-- Team Card 3 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-slate-100 overflow-hidden" data-alt="Professional headshot of Jason Bougie">
+<img alt="Jason Bougie" class="w-full h-full object-cover" data-alt="Portrait of an experienced digital strategist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV7YMdT71Y_WHBLgeFQyitmi3jY2BlJOI4GfplGN8GcuUDyNyBaLQ1RS8hbKTT16OZmmpPmYjXAytLS-M2hCck0ABgevGm9aud2E3VkUQg9ECx42pzFRUiR4oG-2smmWQ6RnA79V8XJpC9T2jVHf1SX_z40SRKz6z6EXKnPvgMyns96kZRYgWQHxfiT60r3HuSLyDRBMKBUQ6m_2rsklLWPKj1gjN28YUz9TWzkFhIDKsZGxll-gEOI-ciMuXYAcAzZ4hI-KJMoJs"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Jason Bougie</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Implementation Partner</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Links/Contact Card -->
+<section class="bg-primary text-white rounded-xl p-6 shadow-lg">
+<h3 class="text-lg font-bold mb-4">Need Support?</h3>
+<p class="text-slate-300 text-sm mb-6">Contact the implementation team for any questions regarding the current phase.</p>
+<a class="flex items-center gap-3 mb-3 text-sm hover:text-white/80 transition-colors" href="mailto:jason@bougiedigital.com">
+<span class="material-symbols-outlined text-sm">mail</span>
+                        jason@bougiedigital.com
+                    </a>
+<a class="flex items-center gap-3 text-sm hover:text-white/80 transition-colors" href="https://bougiedigital.com">
+<span class="material-symbols-outlined text-sm">language</span>
+                        www.bougiedigital.com
+                    </a>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-4">
+<div class="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">layers</span>
+</div>
+<span class="font-bold text-primary dark:text-slate-100 tracking-tight">BOUGIE Digital</span>
+</div>
+<div class="text-center md:text-right">
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-1">Brighton Group — AI Strategy Portal</p>
+<p class="text-xs text-slate-400 dark:text-slate-500">© 2025 BOUGIE Digital. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
